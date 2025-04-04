@@ -8,6 +8,21 @@ The goal of this project is to experiment with different GAN architectures and e
 - **Wasserstein GAN (WGAN)**
 - **Wasserstein GAN with Gradient Penalty (WGAN-GP)**
 
+## How Each GAN Works
+### Least Squares GAN (LS-GAN)
+LS-GAN modifies the loss function of traditional GANs to minimize the Pearson χ² divergence between real and generated distributions. Instead of using binary cross-entropy loss, LS-GAN employs a least-squares loss function, which helps to stabilize training and generate higher-quality images.
+
+### Wasserstein GAN (WGAN)
+WGAN introduces the Wasserstein distance (Earth Mover's Distance) to measure the divergence between real and generated distributions. It replaces the standard discriminator with a **critic** that learns to approximate the Wasserstein distance. WGAN improves training stability by removing the vanishing gradient problem and reducing mode collapse.
+
+### Wasserstein GAN with Gradient Penalty (WGAN-GP)
+WGAN-GP improves upon WGAN by introducing a gradient penalty term that enforces the Lipschitz constraint without requiring weight clipping. This penalty ensures stable training and better-quality image generation.
+
+## Differences Between LS-GAN, WGAN, and WGAN-GP
+- **LS-GAN:** Uses least-squares loss instead of binary cross-entropy, improving gradient flow and image quality.
+- **WGAN:** Uses Wasserstein distance instead of JS divergence, allowing stable training and reducing mode collapse.
+- **WGAN-GP:** Introduces gradient penalty instead of weight clipping to enforce Lipschitz continuity, leading to better convergence and higher-quality images.
+
 ## Evaluation Metrics
 To assess the quality of generated images, the following metrics are used:
 - **Inception Score (IS):** Measures the diversity and quality of generated images.
@@ -32,4 +47,3 @@ Contributions are welcome! Feel free to improve the evaluation process or add ne
 
 ## License
 This project is open-source and available under the MIT License.
-
